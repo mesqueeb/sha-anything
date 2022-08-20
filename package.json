@@ -2,7 +2,7 @@
   "name": "sha-anything",
   "sideEffects": false,
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A tiny TS utility to sha256 anything, including objects (with sorted keys option). Uses native crypto in browser & NodeJS.",
   "module": "./dist/index.es.js",
   "main": "./dist/index.cjs",
