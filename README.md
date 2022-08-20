@@ -37,8 +37,6 @@ await sha256({
 Please note that a different object order, gives a different hash:
 
 ```js
-import { sha256 } from 'sha-anything'
-
 await sha256({
   '007': { name: 'Squirtle', level: 11 },
   '004': { name: 'Charmander', level: 8 },
@@ -52,8 +50,6 @@ await sha256({
 You can make sure you get the same hash by sorting your object keys. This feature is **built in**:
 
 ```js
-import { sha256 } from 'sha-anything'
-
 await sha256({
   '007': { name: 'Squirtle', level: 11 },
   '004': { name: 'Charmander', level: 8 },
@@ -67,8 +63,6 @@ await sha256({
 Setting `deepSort: true` will sort any object or array deeply.
 
 ```js
-import { sha256 } from 'sha-anything'
-
 await sha256({
   '001': { name: 'Bulbasaur', level: 10 },
   '004': { name: 'Charmander', level: 8 },
@@ -81,6 +75,31 @@ await sha256({
   '001': { name: 'Bulbasaur', level: 10 },
 }, { deepSort: true })
 // '64205611ef6f0d7ec4ebab1e3c0f84f1e4cb160af949cff3b32c0bdb0dbe7cb3'
+```
+
+### Other types
+
+```js
+await sha256('123') // 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'
+await sha256(123) // 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'
+await sha256(true) // 'b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b'
+await sha256('true') // 'b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b'
+await sha256(false) // 'fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa'
+await sha256('false') // 'fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa'
+await sha256(undefined) // 'eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c'
+await sha256('undefined') // 'eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c'
+await sha256(null) // '74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b'
+await sha256('null') // '74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b'
+await sha256(/\d/) // '841434ef0453514a69ca5c38926236f72f1496d64c7475feca3dd2e350f2fac6'
+await sha256('/\\d/') // '841434ef0453514a69ca5c38926236f72f1496d64c7475feca3dd2e350f2fac6'
+await sha256(/\D/) // 'a942b440234e1b6a646a583960bd8cbd15012f3acee2d5083552c7514a67de1e'
+await sha256('/\\D/') // 'a942b440234e1b6a646a583960bd8cbd15012f3acee2d5083552c7514a67de1e'
+```
+
+The only thing you can't hash through sha256 is a symbol...
+
+```js
+await sha256(Symbol('123')) // throws an error
 ```
 
 ## Meet the family

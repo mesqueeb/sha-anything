@@ -1,5 +1,5 @@
 import { sha256 as _sha256 } from 'crypto-hash'
-import { isArray, isObject } from 'is-what'
+import { isArray, isObject, isSymbol } from 'is-what'
 import { sort } from 'fast-sort'
 
 export function sortObject<T extends Record<string, unknown>>(
@@ -35,15 +35,20 @@ export async function sha256(
   options?: { sort?: boolean; deepSort?: boolean }
 ): Promise<string> {
   const { sort = false, deepSort = false } = options || {}
+
+  if (isSymbol(payload)) throw new Error('Cannot sha256 a symbol')
+
   if (isObject(payload)) {
     return _sha256(
       JSON.stringify(sort || deepSort ? sortObject(payload, { deep: deepSort }) : payload)
     )
   }
+
   if (isArray(payload)) {
     return _sha256(
       JSON.stringify(sort || deepSort ? sortArray(payload, { deep: deepSort }) : payload)
     )
   }
+
   return _sha256(`${payload}`)
 }
