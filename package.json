@@ -19,7 +19,7 @@
   "dependencies": {
     "crypto-hash": "^3.0.0",
     "fast-sort": "^3.4.0",
-    "is-what": "^5.0.0"
+    "is-what": "^5.0.1"
   },
   "devDependencies": {
     "del-cli": "^5.1.0",
