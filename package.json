@@ -1,6 +1,6 @@
 {
   "name": "sha-anything",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tiny TS utility to sha256 anything, including objects (with sorted keys option). Uses native crypto in browser & NodeJS.",
   "type": "module",
   "sideEffects": false,
