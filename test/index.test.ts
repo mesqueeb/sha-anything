@@ -42,7 +42,7 @@ test('sha256 - undefined, null', async () => {
 
 test('sha256 - symbol', async () => {
   const s = Symbol('123')
-  expect(async () => {
+  await expect(async () => {
     await sha256(s)
   }).rejects.toThrow('Cannot sha256 a symbol')
 })
