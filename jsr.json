@@ -1,0 +1,12 @@
+{
+  "name": "@mesqueeb/sha-anything",
+  "version": "1.0.2",
+  "exports": "./src/index.ts",
+  "publish": {
+    "include": [
+      "src/**",
+      "README.md",
+      "LICENSE"
+    ]
+  }
+}
