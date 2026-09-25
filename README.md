@@ -50,11 +50,14 @@ await sha256({
 You can make sure you get the same hash by sorting your object keys. This feature is **built in**:
 
 ```js
-await sha256({
-  '007': { name: 'Squirtle', level: 11 },
-  '004': { name: 'Charmander', level: 8 },
-  '001': { name: 'Bulbasaur', level: 10 },
-}, { sort: true })
+await sha256(
+  {
+    '007': { name: 'Squirtle', level: 11 },
+    '004': { name: 'Charmander', level: 8 },
+    '001': { name: 'Bulbasaur', level: 10 },
+  },
+  { sort: true },
+)
 // '73e62b59429905357023c7afba82ea95dceffd6e4a0761519efdc389d0e51f0f'
 ```
 
@@ -63,17 +66,23 @@ await sha256({
 Setting `deepSort: true` will sort any object or array deeply.
 
 ```js
-await sha256({
-  '001': { name: 'Bulbasaur', level: 10 },
-  '004': { name: 'Charmander', level: 8 },
-  '007': { name: 'Squirtle', level: 11 },
-}, { deepSort: true })
+await sha256(
+  {
+    '001': { name: 'Bulbasaur', level: 10 },
+    '004': { name: 'Charmander', level: 8 },
+    '007': { name: 'Squirtle', level: 11 },
+  },
+  { deepSort: true },
+)
 // '64205611ef6f0d7ec4ebab1e3c0f84f1e4cb160af949cff3b32c0bdb0dbe7cb3'
-await sha256({
-  '007': { name: 'Squirtle', level: 11 },
-  '004': { level: 8, name: 'Charmander' },
-  '001': { name: 'Bulbasaur', level: 10 },
-}, { deepSort: true })
+await sha256(
+  {
+    '007': { name: 'Squirtle', level: 11 },
+    '004': { level: 8, name: 'Charmander' },
+    '001': { name: 'Bulbasaur', level: 10 },
+  },
+  { deepSort: true },
+)
 // '64205611ef6f0d7ec4ebab1e3c0f84f1e4cb160af949cff3b32c0bdb0dbe7cb3'
 ```
 
